@@ -15,7 +15,7 @@ public class ShowFlowLayout extends JFrame{
     }
 
     public ShowFlowLayout() {
-       setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+       setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
 
         add(new JLabel("first"));
         add(new JTextField(5));
