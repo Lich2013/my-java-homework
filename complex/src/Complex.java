@@ -9,31 +9,31 @@ public class Complex {
     private double real;
     private double imaginary;
     //构造函数
-    public Complex(){
+    public Complex() {
         this.real = 0;
         this.imaginary = 0;
     }
-    public Complex(int real, int imaginary){
+    public Complex(int real, int imaginary) {
         this.real = real;
         this.imaginary = imaginary;
     }
-    public Complex(float real, float imaginary){
+    public Complex(float real, float imaginary) {
         this.real = real;
         this.imaginary = imaginary;
     }
-    public Complex(double real, double imaginary){
+    public Complex(double real, double imaginary) {
         this.real = real;
         this.imaginary = imaginary;
     }
     //加法
-    private static Complex add(Complex first, Complex second){
+    private static Complex add(Complex first, Complex second) {
         Complex result = new Complex();
         result.real = first.real + second.real;
         result.imaginary = first.imaginary + second.imaginary;
         return result;
     }
     //减法
-    private static Complex take(Complex first, Complex second){
+    private static Complex take(Complex first, Complex second) {
         Complex result = new Complex();
         result.real = first.real - second.real;
         result.imaginary = first.imaginary - second.imaginary;
@@ -50,7 +50,8 @@ public class Complex {
                 return first;
             else
                 return second;
-        } else
+        }
+        else
             return second;
     }
     public static void main(String[] args) {
@@ -66,7 +67,7 @@ public class Complex {
             second_real = input.nextDouble();
             second_imaginary = input.nextDouble();
         }
-        catch (Exception e){
+        catch (Exception e) {
             System.out.println("输入错误");
             System.exit(0);
         }
@@ -81,7 +82,7 @@ public class Complex {
             System.out.println("输入错误!");
             System.exit(0);
         }
-        switch (select){
+        switch (select) {
             case 1:
                 result = add(first, second);
                 break;
@@ -90,7 +91,7 @@ public class Complex {
                 break;
             case 3:
                 result = compare(first, second);
-                if (result.imaginary > 0)
+                if (result.imaginary >= 0)
                     System.out.println(result.real+"+"+result.imaginary+"i比较大");
                 else {
                     System.out.print(result.real);
@@ -105,7 +106,7 @@ public class Complex {
                 System.out.println("未知错误!");
                 return;
         }
-        if (result.imaginary > 0)
+        if (result.imaginary >= 0)
             System.out.println(result.real+"+"+result.imaginary+"i");
         else {
             System.out.print(result.real);
