@@ -27,12 +27,13 @@ public class Complex implements ComplexComparable {
         this.real = real;
         this.imaginary = imaginary;
     }
-
+    //取得模值
     public double modulus (Complex complex) {
         double result;
         result = Math.sqrt(Math.pow(complex.real, 2) + Math.pow(complex.imaginary, 2));
         return result;
     }
+    //比较模值
     public static Complex compareModulus(Complex first, Complex second) {
         Complex result;
         double f, s;
