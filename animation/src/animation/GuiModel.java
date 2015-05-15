@@ -2,13 +2,20 @@ package animation;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by lzy on 2015/5/15.
  */
 public class GuiModel extends JFrame {
 
-    public static void main(String[] args) {
+    private Panel tool;
+    public static void main(String[] args){
+        GuiModel gui = new GuiModel();
+        gui.frame();
+    }
+    public void frame() {
         JFrame frame = new JFrame();
         frame.setTitle("Animation");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,17 +28,26 @@ public class GuiModel extends JFrame {
         frame.setSize(screenWidth / 2, screenHeight / 2);
         frame.setLocationRelativeTo(null);
         Panel main = new Panel();
-        Panel tool = new Panel();
-        JButton start = new JButton("start");
-        JButton end = new JButton("end");
-        RunActionListener startAction = new RunActionListener();
-        RunActionListener endAction = new RunActionListener();
-        start.addActionListener(startAction);
-        end.addActionListener(endAction);
-        tool.add(start);
-        tool.add(end);
-        frame.add(tool, BorderLayout.SOUTH);
+        this.tool = new Panel();
+        makeButton("start");
+        makeButton("end");
+        frame.add(this.tool, BorderLayout.SOUTH);
         frame.add(main, BorderLayout.CENTER);
+    }
+
+    public void makeButton(String name) {
+        JButton button = new JButton(name);
+        this.tool.add(button);
+        RunActionListener action = new RunActionListener();
+        button.addActionListener(action);
+    }
+
+    private class RunActionListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent event) {
+
+        }
+
     }
 
 }
