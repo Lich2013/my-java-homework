@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 /**
  * Created by lzy on 2015/5/15.
  */
@@ -12,7 +11,7 @@ public class GuiModel extends JFrame {
 
 
     private Panel tool;
-    private  BallComponet componet;
+    private BallComponet componet;
     public static final int step = 1000;
 
     public GuiModel () {
@@ -44,20 +43,10 @@ public class GuiModel extends JFrame {
     }
 
     public void addBall() {
-       try {
-           BallMoveModel ball = new BallMoveModel();
-           componet.add(ball);
-           for (int i = 1; i < step; i++) {
-//           while (true) {
-               ball.move(componet.getBounds());
-               componet.paint(componet.getGraphics());
-               Thread.sleep(4);
-           }
-
-       }
-       catch (InterruptedException e){
-
-       }
+        BallMoveModel ball = new BallMoveModel();
+        componet.add(ball);
+        Runnable r = new ThreadManageModel(ball, componet);
+        new Thread(r).start();
     }
 
 }
