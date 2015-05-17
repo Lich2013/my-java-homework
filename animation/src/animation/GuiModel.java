@@ -11,43 +11,63 @@ import java.awt.event.ActionListener;
 public class GuiModel extends JFrame {
 
     private Panel tool;
-    public static void main(String[] args){
-        GuiModel gui = new GuiModel();
-        gui.frame();
-    }
-    public void frame() {
-        JFrame frame = new JFrame();
-        frame.setTitle("Animation");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+    private  BallComponet componet;
+    public static final int step = 1000;
+
+    public GuiModel () {
         int screenHeight, screenWidth;
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
         screenHeight = screenSize.height;
         screenWidth = screenSize.width;
-        frame.setSize(screenWidth / 2, screenHeight / 2);
-        frame.setLocationRelativeTo(null);
+
+        setTitle("Animation");
+        componet = new BallComponet();
+
         Panel main = new Panel();
+        main.add(componet, BorderLayout.CENTER);
+        main.setSize(screenWidth / 2, screenHeight / 2);
+        add(main, BorderLayout.CENTER);
+
+        this.setLocationRelativeTo(null);
         this.tool = new Panel();
-        makeButton("start");
-        makeButton("end");
-        frame.add(this.tool, BorderLayout.SOUTH);
-        frame.add(main, BorderLayout.CENTER);
+        makeButton(tool, "start", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addBall();
+            }
+        });
+        makeButton(tool, "end", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        add(this.tool, BorderLayout.SOUTH);
+        pack();
     }
 
-    public void makeButton(String name) {
+    public void makeButton(Panel panel, String name,ActionListener listener) {
         JButton button = new JButton(name);
-        this.tool.add(button);
-        RunActionListener action = new RunActionListener();
-        button.addActionListener(action);
+        panel.add(button);
+        button.addActionListener(listener);
     }
 
-    private class RunActionListener implements ActionListener {
+    public void addBall() {
 
-        public void actionPerformed(ActionEvent event) {
+       try {
+           BallModel ball = new BallModel();
+           componet.add(ball);
+           for (int i = 1; i < 1000; i++) {
+               ball.move(componet.getBounds());
+               componet.paint(componet.getGraphics());
+               Thread.sleep(3);
+           }
 
-        }
+       }
+       catch (InterruptedException e){
 
+       }
     }
 
 }
