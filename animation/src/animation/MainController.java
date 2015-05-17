@@ -12,6 +12,13 @@ public class MainController {
         GuiModel gui = new GuiModel();
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setVisible(true);
+        int screenHeight, screenWidth;
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        screenHeight = screenSize.height;
+        screenWidth = screenSize.width;
+        gui.setSize(screenWidth / 2, screenHeight / 2);
+        gui.setLocationRelativeTo(null);
 
     }
 

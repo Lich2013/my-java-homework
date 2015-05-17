@@ -10,27 +10,17 @@ import java.awt.event.ActionListener;
  */
 public class GuiModel extends JFrame {
 
+
     private Panel tool;
     private  BallComponet componet;
     public static final int step = 1000;
 
     public GuiModel () {
-        int screenHeight, screenWidth;
-        Toolkit kit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = kit.getScreenSize();
-        screenHeight = screenSize.height;
-        screenWidth = screenSize.width;
 
         setTitle("Animation");
         componet = new BallComponet();
-
-        Panel main = new Panel();
-        main.add(componet, BorderLayout.CENTER);
-        main.setSize(screenWidth / 2, screenHeight / 2);
-        add(main, BorderLayout.CENTER);
-
-        this.setLocationRelativeTo(null);
-        this.tool = new Panel();
+        add(componet, BorderLayout.CENTER);
+        tool = new Panel();
         makeButton(tool, "start", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,7 +33,7 @@ public class GuiModel extends JFrame {
                 System.exit(0);
             }
         });
-        add(this.tool, BorderLayout.SOUTH);
+        add(tool, BorderLayout.SOUTH);
         pack();
     }
 
@@ -54,14 +44,14 @@ public class GuiModel extends JFrame {
     }
 
     public void addBall() {
-
        try {
-           BallModel ball = new BallModel();
+           BallMoveModel ball = new BallMoveModel();
            componet.add(ball);
-           for (int i = 1; i < 1000; i++) {
+           for (int i = 1; i < step; i++) {
+//           while (true) {
                ball.move(componet.getBounds());
                componet.paint(componet.getGraphics());
-               Thread.sleep(3);
+               Thread.sleep(4);
            }
 
        }
