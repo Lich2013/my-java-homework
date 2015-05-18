@@ -17,7 +17,6 @@ public class ThreadManageModel implements Runnable{
     }
 
     public void run() {
-        lock.lock();
         try {
 //            for (int i = 1; i < 1000; i++) {
            while (true) {
@@ -32,7 +31,7 @@ public class ThreadManageModel implements Runnable{
             System.exit(0);
         }
         finally {
-            lock.unlock();
+            System.exit(0);
         }
     }
 }
