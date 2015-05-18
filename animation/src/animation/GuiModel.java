@@ -15,7 +15,6 @@ public class GuiModel extends JFrame {
     public static final int step = 1000;
 
     public GuiModel () {
-
         setTitle("Animation");
         componet = new BallComponet();
         add(componet, BorderLayout.CENTER);
@@ -36,7 +35,7 @@ public class GuiModel extends JFrame {
         pack();
     }
 
-    public void makeButton(Panel panel, String name,ActionListener listener) {
+    public void makeButton(Panel panel, String name, ActionListener listener) {
         JButton button = new JButton(name);
         panel.add(button);
         button.addActionListener(listener);

@@ -17,7 +17,10 @@ public class BallComponet extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        for (BallMoveModel b : balls){
+//        g2.setPaint(new Color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255)));
+        ArrayList<BallMoveModel> copy = new ArrayList<>();
+        copy.addAll(balls);
+        for (BallMoveModel b : copy){
             g2.fill(b.getShape());
         }
     }

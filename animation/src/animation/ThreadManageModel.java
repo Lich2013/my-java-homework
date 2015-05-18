@@ -1,11 +1,15 @@
 package animation;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * Created by lzy on 2015/5/15.
  */
 public class ThreadManageModel implements Runnable{
     private BallComponet componet;
     private BallMoveModel ball;
+    private Lock lock = new ReentrantLock();
 
     public ThreadManageModel(BallMoveModel b, BallComponet comp) {
         ball = b;
@@ -13,17 +17,22 @@ public class ThreadManageModel implements Runnable{
     }
 
     public void run() {
+        lock.lock();
         try {
-//            for (int i = 1; i < STEPS; i++) {
+//            for (int i = 1; i < 1000; i++) {
            while (true) {
                 ball.move(componet.getBounds());
                 componet.paint(componet.getGraphics());
-                Thread.sleep(10);
+                Thread.sleep(5);
             }
 
         }
         catch (InterruptedException e){
-
+            Thread.currentThread().interrupt();
+            System.exit(0);
+        }
+        finally {
+            lock.unlock();
         }
     }
 }

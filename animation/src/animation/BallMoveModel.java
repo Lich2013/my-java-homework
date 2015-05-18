@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D;
  */
 public class BallMoveModel {
     private static final int width = 15;
-    private static final int height = 16;
+    private static final int height = 15;
     private double x = 0;
     private double y = 0;
     private double dx = 1;
