@@ -1,15 +1,11 @@
 package animation;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 /**
  * Created by lzy on 2015/5/15.
  */
 public class ThreadManageModel implements Runnable{
     private BallComponet componet;
     private BallMoveModel ball;
-    private Lock lock = new ReentrantLock();
 
     public ThreadManageModel(BallMoveModel b, BallComponet comp) {
         ball = b;
