@@ -7,15 +7,15 @@ import java.awt.geom.Rectangle2D;
  * Created by lzy on 2015/5/17.
  */
 public class BallMoveModel {
-    private static final int width = 15;
-    private static final int height = 15;
-    private double x = 0;
-    private double y = 0;
-    private double dx = 1;
-    private double dy = 1;
+    private static final int width = 15;    //球宽, px
+    private static final int height = 15;   //球高, px
+    private double x = 0;                   //起始位置x
+    private double y = 0;                   //起始位置y
+    private double dx = 1;                  //每次移动x
+    private double dy = 1;                  //每次移动y
 
+    //移动
     public void move(Rectangle2D bounds) {
-
         x += dx;
         y += dy;
         if (x < bounds.getMinX()) {

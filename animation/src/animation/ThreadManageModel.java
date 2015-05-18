@@ -7,14 +7,15 @@ public class ThreadManageModel implements Runnable{
     private BallComponet componet;
     private BallMoveModel ball;
 
+    //构造函数
     public ThreadManageModel(BallMoveModel b, BallComponet comp) {
         ball = b;
         componet = comp;
     }
 
+    //实现Runnable接口
     public void run() {
         try {
-//            for (int i = 1; i < 1000; i++) {
            while (true) {
                 ball.move(componet.getBounds());
                 componet.paint(componet.getGraphics());

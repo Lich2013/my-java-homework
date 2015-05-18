@@ -5,9 +5,12 @@ import java.awt.*;
 
 /**
  * Created by lzy on 2015/5/15.
+ * @param int screenHeight
+ * @param int screenWidth
  */
 public class MainController {
 
+    //main函数, 获取屏幕大小, 来动态设置窗口大小
     public static void main(String[] args) {
         GuiModel gui = new GuiModel();
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -8,12 +8,10 @@ import java.awt.event.ActionListener;
  * Created by lzy on 2015/5/15.
  */
 public class GuiModel extends JFrame {
-
-
     private Panel tool;
     private BallComponet componet;
-    public static final int step = 1000;
 
+    //构造图形界面
     public GuiModel () {
         setTitle("Animation");
         componet = new BallComponet();
@@ -35,12 +33,14 @@ public class GuiModel extends JFrame {
         pack();
     }
 
+    //添加并监听按钮
     public void makeButton(Panel panel, String name, ActionListener listener) {
         JButton button = new JButton(name);
         panel.add(button);
         button.addActionListener(listener);
     }
 
+    //添加球启动新线程
     public void addBall() {
         BallMoveModel ball = new BallMoveModel();
         componet.add(ball);
