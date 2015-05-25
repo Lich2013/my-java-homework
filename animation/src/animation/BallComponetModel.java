@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by lzy on 2015/5/17.
  */
-public class BallComponet extends JPanel {
+public class BallComponetModel extends JPanel {
     private java.util.List<BallMoveModel> balls = new ArrayList<>();
 
     //向数组里添加对象

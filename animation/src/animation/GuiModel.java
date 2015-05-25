@@ -9,12 +9,12 @@ import java.awt.event.ActionListener;
  */
 public class GuiModel extends JFrame {
     private Panel tool;
-    private BallComponet componet;
+    private BallComponetModel componet;
 
     //构造图形界面
     public GuiModel () {
         setTitle("Animation");
-        componet = new BallComponet();
+        componet = new BallComponetModel();
         add(componet, BorderLayout.CENTER);
         tool = new Panel();
         makeButton(tool, "start", new ActionListener() {

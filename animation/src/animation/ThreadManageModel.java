@@ -4,11 +4,11 @@ package animation;
  * Created by lzy on 2015/5/15.
  */
 public class ThreadManageModel implements Runnable{
-    private BallComponet componet;
+    private BallComponetModel componet;
     private BallMoveModel ball;
 
     //构造函数
-    public ThreadManageModel(BallMoveModel b, BallComponet comp) {
+    public ThreadManageModel(BallMoveModel b, BallComponetModel comp) {
         ball = b;
         componet = comp;
     }
