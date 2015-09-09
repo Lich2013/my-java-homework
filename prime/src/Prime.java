@@ -5,13 +5,13 @@ import java.util.Scanner;
  * @Author Lich
  * @param int start 开始位置
  * @param int end   结束位置
- * @param ArrayList arrlist 保存范围内素数
- * @param ArrayList before_list 保存开始位置之前的素数
+ * @param ArrayList<Integer> arrlist 保存范围内素数
+ * @param ArrayList<Integer> before_list 保存开始位置之前的素数
  */
 public class Prime {
     public static void main(String[] args) {
         int start, end;
-        ArrayList arrlist;
+        ArrayList<Integer> arrlist;
         System.out.println("请输入开始位置:");
         Scanner input = new Scanner(System.in);
         start = input.nextInt();
@@ -28,8 +28,8 @@ public class Prime {
     }
     //获取范围内素数
     private static ArrayList getPrime(int start, int end) {
-        ArrayList before_arrlist = new ArrayList();
-        ArrayList arrlist = new ArrayList();
+        ArrayList<Integer> before_arrlist = new ArrayList<Integer>();
+        ArrayList<Integer> arrlist = new ArrayList<Integer>();
         for(int i = 1; i <= start; i++) {
             if(judgePrime(i, before_arrlist)) {
                 before_arrlist.add(i);
@@ -44,19 +44,19 @@ public class Prime {
         return arrlist;
     }
     //判断是否为素数
-    private static boolean judgePrime(int num, ArrayList before_arrlist) {
+    private static boolean judgePrime(int num, ArrayList<Integer> before_arrlist) {
         if(num == 1 || num == 2) {
             return true;
         }
-            for(Object prime : before_arrlist) {
-                if(Integer.valueOf(prime.toString()) == 1)
-                    continue;
-                if(Integer.valueOf(prime.toString()) == num)
-                    continue;
-                if(num % Integer.valueOf(prime.toString()) == 0) {
-                    return false;
-                }
+        for(int prime : before_arrlist) {
+            if(prime == 1)
+                continue;
+            if(prime == num)
+                continue;
+            if(num % prime == 0) {
+                return false;
             }
+        }
         return true;
     }
 }
